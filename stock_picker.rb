@@ -10,7 +10,7 @@ def stock_picker(prices)
         
         priser = prices[index+1..prices.length]
         
-        priser.each_with_index |p, i|
+        priser.each_with_index do |p, salgsdag|
             
             diff = p - price
         
@@ -19,13 +19,10 @@ def stock_picker(prices)
                 profitt = diff
             
                 bunn_index = index
-                topp_index = i #gir feil index, må ha indexen i prices
+                topp_index = salgsdag +(index+1) #legger til index+1 for å få indexen til prices
             end
         
         end
-        
- 
-       
         
     end
         
@@ -34,5 +31,9 @@ puts "Kjøpspris #{prices[bunn_index]}, salgspris: #{prices[topp_index]}, med en
 
 end
 
-
+puts "Min test:"
 stock_picker([12,13,8,14,15,10,9])
+puts "Odin's test:"
+stock_picker([17,3,6,9,15,8,6,1,10])
+puts "Test med lavest tall på slutten"
+stock_picker([9,8,7,6,5,4,3,2,1])
